@@ -17,7 +17,7 @@ const fakeHTTPMenu = async () => {
   console.log('⚡ Server request!')
   await delay(1500)
   console.log('⚡ Server return!')
-  return Promise.resolve([{ body: 'Arepas' }, { body: 'Empanadas' }])
+  return Promise.resolve([{ body: 'menu 1' }, { body: 'menu 2' },{ body: 'Menu 3' }])
 }
 
 /***
@@ -29,7 +29,7 @@ const fakeHTTPPayment = async () => {
   await delay(500)
   console.log('⚡ Server return!')
   return Promise.resolve([
-      { body: `Puedes hacer un *pago* en el siguiente link: ${link}` },
+      { body: `Ahora, Puedes hacer un *pago* en el siguiente link: ${link}` },
   ])
 }
 
@@ -53,9 +53,9 @@ const flujoPedido = addKeyword(['pedido', 'pedir']).addAnswer(
 )
 
 const conversacionPrincipal = addKeyword(['hola', 'ole', 'buenas'])
-  .addAnswer('Bienvenido al restaurante *La cuchara de palo 🙌*')
+  .addAnswer('Bienvenido al ChatBot de muestra de Civimatech 🙌*')
   .addAnswer(
-      `El menu del día es el siguiente`,
+      `Continuemos con el siguiente flujo`,
       null,
       async (_, { flowDynamic }) => {
           const menu = await fakeHTTPMenu()
